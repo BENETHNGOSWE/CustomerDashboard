@@ -22,4 +22,4 @@ Route::get('/home', [EpicController::class,'home'])->name('home');
 
 Route::get('/customerlist', [CustomerController::class,'index'])->name('customers.index');
 Route::get('/customercreate', [CustomerController::class,'create'])->name('customers.create');
-Route::get('/customerstore', [CustomerController::class,'store'])->name('customers.store');
+Route::post('/customerstore', [CustomerController::class,'store'])->name('customers.store');
