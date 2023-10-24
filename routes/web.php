@@ -14,12 +14,13 @@ use App\Http\Controllers\Customer\CustomerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home', [EpicController::class,'home'])->name('home');
+Route::get('/home', [CustomerController::class,'home'])->name('home');
 
-Route::get('/customerlist', [CustomerController::class,'index'])->name('customers.index');
+Route::get('/', [CustomerController::class,'index'])->name('customers.index');
 Route::get('/customercreate', [CustomerController::class,'create'])->name('customers.create');
 Route::post('/customerstore', [CustomerController::class,'store'])->name('customers.store');
+Route::get('/customershow/{id}', [CustomerController::class,'show '])->name('customer.show');

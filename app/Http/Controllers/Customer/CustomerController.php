@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
+    public function home(){
+        return view("home");
+    }
+    
     public function index() {
         $customers = Customer::all();
-        return view("customer.index", compact("customers"));
+        return view("customers.index", compact("customers"));
     }
 
 
@@ -47,21 +51,19 @@ class CustomerController extends Controller
             ]);
 
             DB::commit();
-            return redirect()->route('customer.index')->with('success','Customer Added');
-            $customer->save();
-            dd($customer);
+            return redirect()->route('customers.index')->with('success','Customer Added');
         }catch(\Exception $e){
             DB::rollBack();
-            return redirect()->route('customer.index')->with('error','Error happending');
-            dd($customer);
+            return redirect()->route('customers.index')->with('error','Error happending');
+            
     }
    
 
 }
 
 
-    public function show($customer,$id) {
-        $customer = Customer::find($customer->$id);
+    public function show($id) {
+        $customer = Customer::find($id);
         return view('customers.show', compact('customer'));
     }
 

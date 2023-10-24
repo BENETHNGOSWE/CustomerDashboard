@@ -90,9 +90,9 @@
 												<div class="modal-header no-bd">
 													<h5 class="modal-title">
 														<span class="fw-mediumbold">
-														New</span> 
-														<span class="fw-light">
-															Row
+														 Create new</span> 
+														<span class="fw-mediumbold">
+															Customer
 														</span>
 													</h5>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -100,34 +100,74 @@
 													</button>
 												</div>
 												<div class="modal-body">
-													<p class="small">Create a new row using this form, make sure you fill them all</p>
-													<form>
+													<p class="small">Create a new customer using this form, make sure you fill them all</p>
+													{{-- <form action="{{ route('customers.store')}}" method="post">
 														<div class="row">
 															<div class="col-sm-12">
 																<div class="form-group form-group-default">
-																	<label>Name</label>
-																	<input id="addName" type="text" class="form-control" placeholder="fill name">
+																	<label>First Name</label>
+																	<input id="customer_firstname" type="text" class="form-control" placeholder="fill firstname">
 																</div>
 															</div>
+
+															<div class="col-sm-12">
+																<div class="form-group form-group-default">
+																	<label>Last Name</label>
+																	<input id="customer_lastname" type="text" class="form-control" placeholder="fill lastname">
+																</div>
+															</div>  
+
+
 															<div class="col-md-6 pr-0">
 																<div class="form-group form-group-default">
-																	<label>Position</label>
-																	<input id="addPosition" type="text" class="form-control" placeholder="fill position">
+																	<label>Location</label>
+																	<input id="customer_location" type="text" class="form-control" placeholder="fill location">
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group form-group-default">
-																	<label>Office</label>
-																	<input id="addOffice" type="text" class="form-control" placeholder="fill office">
+																	<label>Phone Number</label>
+																	<input id="customer_phonenumber" type="text" class="form-control" placeholder="fill phone number">
 																</div>
 															</div>
 														</div>
+													</form> --}}
+
+
+													<form action="{{ route('customers.store') }}" method="post" class="col-md-12">
+														@csrf
+												
+														<div class="mb-3">
+															<label for="customer_firstname" class="form-label">First Name:</label>
+															<input type="text" name="customer_firstname" class="form-control" required>
+														</div>
+												
+														<div class="mb-3">
+															<label for="customer_lastname" class="form-label">Last Name:</label>
+															<input type="text" name="customer_lastname" class="form-control" required>
+														</div>
+												
+														<div class="mb-3">
+															<label for="customer_location" class="form-label">Location:</label>
+															<input type="text" name="customer_location" class="form-control" required>
+														</div>
+												
+														<div class="mb-3">
+															<label for="customer_phonenumber" class="form-label">Phone Number:</label>
+															<input type="text" name="customer_phonenumber" class="form-control" required>
+															@error('customer_phonenumber')
+																<p class="text-danger">{{ $message }}</p>
+															@enderror
+														</div>
+												
+														<button type="submit" class="btn btn-primary">Submit</button>
 													</form>
 												</div>
-												<div class="modal-footer no-bd">
+										
+												{{-- <div class="modal-footer no-bd">
 													<button type="button" id="addRowButton" class="btn btn-primary">Add</button>
 													<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-												</div>
+												</div> --}}
 											</div>
 										</div>
 									</div>
@@ -136,17 +176,20 @@
 										<table id="add-row" class="display table table-striped table-hover" >
 											<thead>
 												<tr>
-													<th>Name</th>
-													<th>Position</th>
-													<th>Office</th>
+													<th>First Name</th>
+													<th>Last Name</th>
+													<th>Location</th>
+													<th>Phone Number</th>
 													<th style="width: 10%">Action</th>
 												</tr>
 											</thead>
 											<tbody>
+												@foreach ($customers as $customer)
 												<tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
+													<td>{{$customer->customer_firstname}}</td>
+													<td>{{$customer->customer_lastname}}</td>
+													<td>{{$customer->customer_location}}</td>
+													<td>{{$customer->customer_phonenumber}}</td>
 													<td>
 														<div class="form-button-action">
 															<button type="button" data-toggle="tooltip" title="" class="btn btn-outline-primary btn-lg" data-original-title="Edit Task">
@@ -161,24 +204,7 @@
 														</div>
 													</td>
 												</tr>
-												<tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-outline-primary btn-lg" data-original-title="Edit Task">
-																<i class="fas fa-eye"></i>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-outline-success mx-2" data-original-title="Remove" >
-																<i class="fas fa-edit"></i>
-															</button>
-															<button type="button"  class="btn btn-outline-danger">
-																<i class="fas fa-trash"></i>
-															</button>
-														</div>
-													</td>
-												</tr>
+												@endforeach
 											</tbody>
 										</table>
 									</div>
