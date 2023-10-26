@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EpicController;
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Producttypes\ProducttypeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +27,8 @@ Route::get('/', [CustomerController::class,'index'])->name('customers.index');
 Route::get('/customercreate', [CustomerController::class,'create'])->name('customers.create');
 Route::post('/customerstore', [CustomerController::class,'store'])->name('customers.store');
 Route::get('/customershow/{id}', [CustomerController::class,'show '])->name('customer.show');
+
+
+Route::get('/producttypecreate', [ProducttypeController::class,'create'])->name('create.producttypes');
+Route::post('/producttypestore', [CustomerController::class,'store'])->name('store.productytypes');
+

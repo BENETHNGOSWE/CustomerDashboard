@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    protected $fillable = ['product_name'] ;
+
+    public function productsTypes() {
+        return $this->morphMany(ProductType::class,'product');
+    }
 }
