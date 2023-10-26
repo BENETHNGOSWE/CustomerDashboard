@@ -4,6 +4,7 @@
 <div class="main-panel" style="margin-top: 5em;">
     <form action="{{ route('customers.store') }}" method="post" class="col-md-4">
         @csrf
+       
 
         <div class="mb-3">
             <label for="customer_firstname" class="form-label">First Name:</label>

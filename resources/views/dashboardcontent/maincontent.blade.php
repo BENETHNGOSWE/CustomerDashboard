@@ -11,7 +11,7 @@
 							</div>
 							<div class="ml-md-auto py-2 py-md-0">
 								<a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
-								<a href="#" class="btn btn-white btn-border btn-round">Add Customer</a>
+								<a href="{{ route('customers.create')}}" class="btn btn-white btn-border btn-round">Add Customer</a>
 							</div>
 						</div>
 					</div>
@@ -106,9 +106,20 @@
 															<div class="col-sm-12">
 																<div class="form-group form-group-default">
 																	<label>First Name</label>
+																	<input id="addName" type="text" class="form-control" name="customer_firstname" placeholder="fill name">
+																	<label>First Name</label>
 																	<input id="customer_firstname" type="text" class="form-control" placeholder="fill firstname">
 																</div>
 															</div>
+
+															<div class="col-sm-12">
+																<div class="form-group form-group-default">
+																	<label>Last Name</label>
+																	<input id="addName" type="text" class="form-control" name="customer_lastname" placeholder="fill name">
+																</div>
+															</div>  
+
+
 
 															<div class="col-sm-12">
 																<div class="form-group form-group-default">
@@ -120,6 +131,8 @@
 
 															<div class="col-md-6 pr-0">
 																<div class="form-group form-group-default">
+																	<label>C.Location</label>
+																	<input id="addPosition" type="text" class="form-control" name="customer_location" placeholder="fill position">
 																	<label>Location</label>
 																	<input id="customer_location" type="text" class="form-control" placeholder="fill location">
 																</div>
@@ -127,9 +140,14 @@
 															<div class="col-md-6">
 																<div class="form-group form-group-default">
 																	<label>Phone Number</label>
+																	<input id="addOffice" type="text" class="form-control" name="customer_phonenumber" placeholder="fill office">
+																	<label>Phone Number</label>
 																	<input id="customer_phonenumber" type="text" class="form-control" placeholder="fill phone number">
 																</div>
 															</div>
+
+															
+															
 														</div>
 													</form> --}}
 
